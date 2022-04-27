@@ -23,6 +23,6 @@ public class MyPanel extends JPanel {
         super.paint(g);
         g.fillRect(0,0,1000,750);//默认黑色
         Draw.DrawTanks(g,0,1,hero);
-        Draw.DrawTanks(g,0,0,new Hero(200,100,10,60));
+
     }
 }
