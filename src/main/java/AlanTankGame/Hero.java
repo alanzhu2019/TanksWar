@@ -1,3 +1,5 @@
+package AlanTankGame;
+
 import Bean.Tank;
 
 /**

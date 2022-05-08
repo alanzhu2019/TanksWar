@@ -4,9 +4,21 @@ public class Tank {
 
     private int x;//坦克横坐标
     private int y;//坦克纵坐标
+    private int direction;//坦克方向 0 向上、1 向右 、 2 向下、 3 向左
 
     private int weight; //坦克轮毂宽
     private int length; //坦克轮毂的长
+
+    private int speed; //速度
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
 
     public Tank(int x, int y) {
         this.x = x;
@@ -19,6 +31,29 @@ public class Tank {
         this.y = y;
         this.weight = weight;
         this.length = length;
+    }
+
+
+
+    public void moveUp(){
+        y -= speed;
+    }
+    public void moveDown(){
+        y += speed;
+    }
+    public void moveRight(){
+        x += speed;
+    }
+    public void moveLeft(){
+        x -= speed;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 
     public int getWeight() {

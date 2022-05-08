@@ -1,4 +1,5 @@
-import Bean.Tank;
+package AlanTankGame;
+
 import TanksFunction.Draw;
 
 import javax.swing.*;
