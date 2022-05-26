@@ -1,7 +1,6 @@
 package AlanTankGame02;
 
 import Bean.Tank;
-import Event.Shot;
 
 /**
  * @author zhulei
@@ -11,13 +10,7 @@ import Event.Shot;
 //自己的坦克
 public class Hero extends Tank {
 
-     Shot shot = null;
     public Hero(int x, int y, int weight, int length) {
         super(x, y, weight, length);
-    }
-
-    //射击
-    public void shotEnemyTank(){
-        //创建 Shot
     }
 }
