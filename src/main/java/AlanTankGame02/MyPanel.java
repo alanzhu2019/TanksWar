@@ -1,6 +1,7 @@
 package AlanTankGame02;
 
 import TanksFunction.Draw;
+import TanksFunction.Shot;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,9 @@ import java.util.Vector;
  * 坦克大战绘图区
  */
 
-
-public class MyPanel extends JPanel implements KeyListener {
+//为了监听 键盘事件 ，实现KeyListener
+//为了让Panel 不停的重绘子弹，需要将MyPanel 实现一个RunAble
+public class MyPanel extends JPanel implements KeyListener ,Runnable{
 
     Hero hero = null;
 
@@ -38,6 +40,16 @@ public class MyPanel extends JPanel implements KeyListener {
         super.paint(g);
         g.fillRect(0, 0, 1000, 750);//默认黑色
         Draw.DrawTanks(g, hero.getDirection(), 0, hero);
+
+        //画hero射击的子弹
+        if (hero.shots != null){
+            for (Shot shot : hero.shots ){
+                if (shot != null && shot.isLive == true){
+                    // g.fill3DRect(hero.shot.getX(),hero.shot.getY(),2,2,false);
+                    g.draw3DRect(shot.getX(),shot.getY(),2,2,false);
+                }
+            }
+        }
 
         for(EnemyTank em : enemyTanks){
             em.setDirection(2);
@@ -69,12 +81,32 @@ public class MyPanel extends JPanel implements KeyListener {
             hero.setDirection(3);
             hero.moveLeft();
         }
+
+        if (e.getKeyCode() == KeyEvent.VK_J){
+            hero.shotEnemyTank();
+        }
+
         this.repaint();
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void run() {
+
+        while (true){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            this.repaint();
+        }
 
     }
 }

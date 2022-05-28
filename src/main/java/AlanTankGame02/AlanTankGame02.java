@@ -19,6 +19,8 @@ public class AlanTankGame02 extends JFrame {
     public AlanTankGame02(){
         myPanel = new MyPanel();
         this.add(myPanel);
+        Thread thread = new Thread(myPanel);
+        thread.start();
         this.setSize(1000 ,750);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
